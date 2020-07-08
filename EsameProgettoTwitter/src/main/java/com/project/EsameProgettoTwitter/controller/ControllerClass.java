@@ -4,7 +4,7 @@
 package com.project.EsameProgettoTwitter.controller;
 
 /**
- * @author pppfe
+ * @author Federico Paolucci
  *
  */
 public class ControllerClass {
