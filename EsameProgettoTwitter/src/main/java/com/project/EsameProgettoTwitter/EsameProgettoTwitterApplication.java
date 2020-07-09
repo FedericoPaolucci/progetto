@@ -5,6 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class EsameProgettoTwitterApplication {
+	
+	String url = "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/user/1.1/statuses/retweets_of_me.json";
+	//parametro per mostrare le entities dove sono contenute le menzioni
+	String parameter = "?include_entities=true";
+	//url completo
+	String urlcompleto = url + parameter;
 
 	public static void main(String[] args) {
 		SpringApplication.run(EsameProgettoTwitterApplication.class, args);
