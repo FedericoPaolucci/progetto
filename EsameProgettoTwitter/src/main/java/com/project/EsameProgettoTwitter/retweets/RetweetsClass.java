@@ -17,6 +17,7 @@ import org.json.JSONException;
 
 import com.project.EsameProgettoTwitter.model.Metadata;
 import com.project.EsameProgettoTwitter.model.Proprieties;
+import com.project.EsameProgettoTwitter.service.Parser;
 
 /**
  * @author Federico Paolucci
@@ -28,6 +29,7 @@ public class RetweetsClass {
 	private static ArrayList<Metadata> metadata = new ArrayList<Metadata>();
 
 	/**
+	 * Restituisce l'ArrayList di Proprieties, ovvero tutte le informazioni principali dei retweets.
 	 * @return Arraylist di oggetti Proprieties
 	 */
 
@@ -55,14 +57,13 @@ public class RetweetsClass {
 
 	/**
 	 * Scarica dall'url inserito come parametro un json.
-	 * In seguito, con questo crea un JSONObject.
+	 * In seguito trasforma il json in un array di oggetti Proprieties richiamando la classe Parser.
 	 * @param url
-	 * @return un JSONObject creato dal Json scaricato
 	 * @throws IOException
 	 * @throws JSONException
 	 */
 	
-	public static JSONArray readJsonFromUrl(String url) throws IOException, JSONException {
+	public static void readJsonFromUrl(String url) throws IOException, JSONException {
 		
 		InputStream is = new URL(url).openStream();
 		
@@ -73,7 +74,8 @@ public class RetweetsClass {
 			String allText = readAll(rd); 
 			//Crea un JSONObject di tutto il json
 			JSONArray json = new JSONArray(allText);  //forse JSONObject?
-			//return json;                                     //ATTENZIONE:metti a posto di questo quello che fa diventare l'oggetto parametri(cambia anche desc)
+			//popola l'Arraylist<Proprieties> con tutti gli oggetti Proprieties scaricati
+			proprieties = Parser.Parsing(json);
 		} finally {
 			//chiudo l'InputStream is
 			is.close();
@@ -94,7 +96,7 @@ public class RetweetsClass {
 		int temp;
 		
 		while ((temp = rd.read()) != -1) {
-			//aggiunge con append un carattere alla stringa
+			//aggiunge con append un carattere trasformato dall' Integer alla stringa
 			sb.append((char) temp);
 		}
 		return sb.toString();
