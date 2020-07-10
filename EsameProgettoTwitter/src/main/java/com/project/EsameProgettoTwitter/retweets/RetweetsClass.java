@@ -39,7 +39,6 @@ public class RetweetsClass {
 
 	/**
 	 * Inizializza e restituisce l'ArrayList di Metadata
-	 * 
 	 * @return ArrayList di oggetti Metadata
 	 */
 
