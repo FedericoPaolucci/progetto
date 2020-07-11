@@ -77,6 +77,9 @@ public class Proprieties {
 	public void setMentions_name(String[] mentions_name) {
 		this.mentions_name = mentions_name;
 	}
+	public int getMentions_nameSize() {
+		return mentions_name.length;  //operazione utile per il calcolo delle statistiche
+	}
 	
 	
 	public String[] getMentions_id() {

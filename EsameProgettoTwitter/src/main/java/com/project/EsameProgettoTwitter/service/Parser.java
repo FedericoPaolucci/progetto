@@ -62,9 +62,15 @@ public class Parser {
 				U_M_id[numU_MObject] = U_Sobject.getString("id_str");
 			}
 
+			
 			// crea un oggetto Proprieties e lo aggiunge all'arraylist
-			Proprieties objectProprieties = new Proprieties(object.getString("created_at"), object.getString("id_str"),
-					object.getString("text"), HT, U_M_S_N, U_M_N, U_M_id);
+			Proprieties objectProprieties = new Proprieties(object.getString("created_at"), 
+															object.getString("id_str"),
+															object.getString("text"), 
+															HT, 
+															U_M_S_N, 
+															U_M_N, 
+															U_M_id);
 			proprieties.add(objectProprieties);
 		}
 
