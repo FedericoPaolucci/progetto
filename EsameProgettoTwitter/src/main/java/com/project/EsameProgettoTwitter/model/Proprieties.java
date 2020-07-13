@@ -3,9 +3,10 @@
  */
 package com.project.EsameProgettoTwitter.model;
 
-/** E' la classe i cui oggetti contengono i parametri principali di un retweet
+/**
+ * E' la classe i cui oggetti contengono i parametri principali di un retweet
+ * 
  * @author Federico Paolucci
- *
  */
 public class Proprieties {
 	

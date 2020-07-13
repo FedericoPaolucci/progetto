@@ -20,9 +20,11 @@ import com.project.EsameProgettoTwitter.model.Proprieties;
 import com.project.EsameProgettoTwitter.service.Parser;
 
 /**
+ * Classe che gestisce i retweets, si usa per richiedere Proprieties dei Retweets, i metadata e per scaricare il JSON.
+ * 
  * @author Federico Paolucci
- *
  */
+
 public class RetweetsClass {
 
 	private static ArrayList<Proprieties> proprieties = new ArrayList<Proprieties>();
@@ -30,6 +32,7 @@ public class RetweetsClass {
 
 	/**
 	 * Restituisce l'ArrayList di Proprieties, ovvero tutte le informazioni principali dei retweets.
+	 * 
 	 * @return Arraylist di oggetti Proprieties
 	 */
 
@@ -39,6 +42,7 @@ public class RetweetsClass {
 
 	/**
 	 * Inizializza e restituisce l'ArrayList di Metadata
+	 * 
 	 * @return ArrayList di oggetti Metadata
 	 */
 
@@ -57,12 +61,13 @@ public class RetweetsClass {
 	/**
 	 * Scarica dall'url inserito come parametro un json.
 	 * In seguito trasforma il json in un array di oggetti Proprieties richiamando la classe Parser.
+	 * 
 	 * @param url
 	 * @throws IOException
 	 * @throws JSONException
 	 */
 	
-	public static void readJsonFromUrl(String url) throws IOException, JSONException {
+	public static void downloadJSON(String url) throws IOException, JSONException {
 		
 		InputStream is = new URL(url).openStream();
 		
@@ -75,7 +80,7 @@ public class RetweetsClass {
 			JSONArray json = new JSONArray(allText);  //forse JSONObject?
 			//popola l'Arraylist<Proprieties> con tutti gli oggetti Proprieties scaricati
 			proprieties = Parser.Parsing(json);
-		} finally {
+		}finally {
 			//chiudo l'InputStream is
 			is.close();
 		}     
@@ -84,6 +89,7 @@ public class RetweetsClass {
 	
 	/**
 	 * Crea una stringa con tutto ciò che ha letto
+	 * 
 	 * @param rd
 	 * @return stringa con ciò che ha letto
 	 * @throws IOException
