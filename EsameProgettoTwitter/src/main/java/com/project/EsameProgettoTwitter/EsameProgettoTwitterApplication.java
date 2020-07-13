@@ -8,6 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.project.EsameProgettoTwitter.retweets.RetweetsClass;
 
+/**
+ * Scarica il JSON e lo rende un array di oggetti Proprieties, poi avvia l'applicazione Spring.
+ * 
+ * @author Federico Paolucci
+ */
+
 @SpringBootApplication
 public class EsameProgettoTwitterApplication {
 	

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.project.EsameProgettoTwitter.retweets;
 
 import java.io.BufferedReader;

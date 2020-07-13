@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.project.EsameProgettoTwitter.controller;
 
 import java.util.ArrayList;
