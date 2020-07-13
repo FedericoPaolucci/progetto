@@ -37,7 +37,7 @@ public class CalcStats {
 
 			TempObject = proprieties.get(pos);
 			TempValue = TempObject.getMentions_nameSize();
-			TempStringArray = TempObject.getMentions_name();
+			TempStringArray = TempObject.getMentions_screen_name();
 
 			if (TempValue == 0) {
 				noMentions++; // incrementa noMentions

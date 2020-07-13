@@ -47,7 +47,7 @@ public class Parser {
 				HT = new String[hashtagsArray.length()];
 				// iterazione per prendere ogni hashtag e metterli in un array di Strings
 				for (int numHTObject = 0; numHTObject < hashtagsArray.length(); numHTObject++) {
-					JSONObject HTobject = json.getJSONObject(numHTObject);
+					JSONObject HTobject = hashtagsArray.getJSONObject(numHTObject);
 					HT[numHTObject] = HTobject.getString("text");
 				}
 
@@ -61,7 +61,7 @@ public class Parser {
 				// iterazione per prendere tutti gli elementi di user_mentions e metterli in
 				// array di Strings diversi
 				for (int numU_MObject = 0; numU_MObject < user_mentionsArray.length(); numU_MObject++) {
-					JSONObject U_Sobject = json.getJSONObject(numU_MObject);
+					JSONObject U_Sobject = user_mentionsArray.getJSONObject(numU_MObject);
 					U_M_S_N[numU_MObject] = U_Sobject.getString("screen_name");
 					U_M_N[numU_MObject] = U_Sobject.getString("name");
 					U_M_id[numU_MObject] = U_Sobject.getString("id_str");
