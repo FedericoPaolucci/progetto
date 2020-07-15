@@ -1,7 +1,9 @@
 package com.project.EsameProgettoTwitter.model;
 
-/** E' la classe i cui oggetti rappresentano il nome del parametro assegnato,
+/** 
+ * E' la classe i cui oggetti rappresentano il nome del parametro assegnato,
  * il nome del parametro nel json e il tipo di dato.
+ * 
  * @author Federico Paolucci
  */
 public class Metadata {

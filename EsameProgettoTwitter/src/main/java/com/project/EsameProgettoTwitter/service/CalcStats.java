@@ -57,8 +57,8 @@ public class CalcStats {
 	 * Calcola la statistica delle menzioni, calcolando quante volte vengono
 	 * ripetuti i nomi.
 	 * 
-	 * @param Arraylist<String> fornito dall'operazione mentionsToArray
-	 * @return HashMap con menzioni e numero di volte in cui esse compaiono
+	 * @param Arraylist<String> fornito dall'operazione mentionsToArray (tutte le menzioni scritte in un Array di String)
+	 * @return HashMap<String,Integer> con menzioni e numero di volte in cui esse compaiono
 	 */
 	public static HashMap<String,Integer> Calcolate(ArrayList<String> mentionsToArray) {
 		

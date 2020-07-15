@@ -59,9 +59,9 @@ public class RetweetsClass {
 	 * Scarica dall'url inserito come parametro un json.
 	 * In seguito trasforma il json in un array di oggetti Proprieties richiamando la classe Parser.
 	 * 
-	 * @param url
-	 * @throws IOException
-	 * @throws JSONException
+	 * @param url : l'indirizzo dell'API
+	 * @throws IOException se l'url inserito non è valido
+	 * @throws JSONException se c'e' un errore durante la creazione del JSON 
 	 */
 	
 	public static void downloadJSON(String url) throws IOException, JSONException {
@@ -74,7 +74,7 @@ public class RetweetsClass {
 			//la stringa allText conterrà tutto il json
 			String allText = readAll(rd); 
 			//Crea un JSONObject di tutto il json
-			JSONArray json = new JSONArray(allText);  //forse JSONObject?
+			JSONArray json = new JSONArray(allText);  
 			//popola l'Arraylist<Proprieties> con tutti gli oggetti Proprieties scaricati
 			proprieties = Parser.Parsing(json);
 		}finally {
@@ -87,9 +87,9 @@ public class RetweetsClass {
 	/**
 	 * Crea una stringa con tutto ciò che ha letto
 	 * 
-	 * @param rd
+	 * @param rd che è il flusso di dati da cui estrarre il json
 	 * @return stringa con ciò che ha letto
-	 * @throws IOException
+	 * @throws IOException che viene lanciata in caso di errori di input/output (rd non fornisce dati)
 	 */
 
 	private static String readAll(Reader rd) throws IOException {

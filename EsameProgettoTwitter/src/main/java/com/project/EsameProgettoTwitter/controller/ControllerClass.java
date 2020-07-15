@@ -24,9 +24,9 @@ public class ControllerClass {
 	
 	
 	/**
-	 * Richiesta GET /metadata: ritorna i metadati 
+	 * Richiesta GET /metadata: riporta i metadati 
 	 * 
-	 * @return RetweetsClass.getArrayMetadata()
+	 * @return RetweetsClass.getArrayMetadata() cioe' i metadati
 	 */
 	
 	@RequestMapping(value = "metadata", method = RequestMethod.GET)
@@ -36,9 +36,9 @@ public class ControllerClass {
 	}
 	
 	/**
-	 * Richiesta GET /data: ritorna i dati del JSON
+	 * Richiesta GET /data: riporta i dati del JSON
 	 * 
-	 * @return RetweetsClass.getProprieties()
+	 * @return RetweetsClass.getProprieties() cioe' tutti i dati piu' rilevanti del JSON
 	 */
 	
 	@RequestMapping(value = "data", method = RequestMethod.GET)
@@ -48,10 +48,10 @@ public class ControllerClass {
 	}
 	
 	/**
-	 * Richiesta GET /stats: ritorna quante volte una menzione compare nei retweets dell'user. 
+	 * Richiesta GET /stats: riporta quante volte una menzione compare nei retweets dell'user. 
 	 * Riporta anche quanti retweets non presentano menzioni.
 	 * 
-	 * @return
+	 * @return HashMap<String,Integer> che rappresenta il numero di volte quelle menzioni appaiono nei retweets.
 	 */
 	
 	@RequestMapping(value = "stats", method = RequestMethod.GET)

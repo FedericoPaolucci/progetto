@@ -26,8 +26,9 @@ public class Parser {
 	 * effettua il parsing salvando le proprietà più rilevanti in oggetti
 	 * Proprieties
 	 * 
-	 * @param json
-	 * @return
+	 * @param json: è il json scaricato 
+	 * @return proprieties cioè un ArrayList<Proprieties> popolato con oggetti che rappresentano i retweets
+	 * @throws JSONException se c'è un errore durante la costruzione di un JSON
 	 */
 	public static ArrayList<Proprieties> Parsing(JSONArray json) {
 
