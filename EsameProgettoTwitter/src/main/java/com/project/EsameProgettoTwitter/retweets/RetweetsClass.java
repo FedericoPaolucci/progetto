@@ -1,6 +1,7 @@
 package com.project.EsameProgettoTwitter.retweets;
 
 import java.io.BufferedReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -47,16 +48,25 @@ public class RetweetsClass {
 
 		metadata.add(new Metadata("created_at", "created_at", "String"));
 		metadata.add(new Metadata("id", "id_str", "String"));
-		metadata.add(new Metadata("text", "text", "String"));
+		metadata.add(new Metadata("text", "full_text", "String"));
 		metadata.add(new Metadata("hashtags", "entities_hashtags", "String[]"));
 		metadata.add(new Metadata("mentions_screen_name", "entities_user_mentions_screen_name", "String[]"));
 		metadata.add(new Metadata("mentions_name", "entities_user_mentions_name", "String[]"));
 		metadata.add(new Metadata("mentions_id", "entities_user_mentions_id_str", "String[]"));
 		return metadata;
 	}
+	
+	/**
+	 * Reset dell'ArrayList<Metadata> 
+	 */
+	public static void ResetMetadata() {
+		
+		metadata.clear();	
+	}
 
 	/**
-	 * Scarica dall'url inserito come parametro un json.
+	 * Scarica dall'url inserito (come parametro) un json.
+	 * Crea un file .json con all'interno il json scaricato.
 	 * In seguito trasforma il json in un array di oggetti Proprieties richiamando la classe Parser.
 	 * 
 	 * @param url : l'indirizzo dell'API
@@ -75,8 +85,20 @@ public class RetweetsClass {
 			String allText = readAll(rd); 
 			//Crea un JSONObject di tutto il json
 			JSONArray json = new JSONArray(allText);  
+			
+			//crea o sovrascrive un file .json con il json scaricato
+			try (FileWriter file = new FileWriter("retweets_json.json")) {
+				 
+	            file.write(json.toString());
+	            file.flush();
+	 
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+			
 			//popola l'Arraylist<Proprieties> con tutti gli oggetti Proprieties scaricati
 			proprieties = Parser.Parsing(json);
+			
 		}finally {
 			//chiudo l'InputStream is
 			is.close();

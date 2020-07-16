@@ -19,7 +19,7 @@ public class EsameProgettoTwitterApplication {
 	
 	static String url = "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/user/1.1/statuses/retweets_of_me.json";
 	//parametro per mostrare le entities dove sono contenute le menzioni
-	static String parameter = "?include_entities=true";
+	static String parameter = "?include_entities=true&tweet_mode=extended";
 	//url completo
 	static String urlcompleto = url + parameter;
 

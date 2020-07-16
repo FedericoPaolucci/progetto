@@ -27,7 +27,7 @@ public class CalcStats {
 	 * Popola un arraylist di stringhe con tutte le menzioni dei retweet e
 	 * incrementa un contatore per ogni retweet senza menzioni
 	 * 
-	 * @return ArrayList con tutte le menzioni presenti in tutti i retweet
+	 * @return ArrayList<String> con tutte le menzioni presenti in tutti i retweet
 	 */
 	public static ArrayList<String> mentionsToArray(ArrayList<Proprieties> proprieties) {
 
@@ -37,7 +37,8 @@ public class CalcStats {
 			TempObject = proprieties.get(pos);
 			TempValue = TempObject.getMentions_nameSize();
 			TempStringArray = TempObject.getMentions_screen_name();
-
+			
+			//controlla se la grandezza dell'array delle menzioni è 0
 			if (TempValue == 0) {
 				noMentions++; // incrementa noMentions
 			} else {
@@ -45,7 +46,7 @@ public class CalcStats {
 				// mentions_name in un oggetto di proprieties
 				for (int StringPos = 0; StringPos < TempValue; StringPos++) {
 					arrayString.add(TempStringArray[StringPos]); // aggiunge all'array di stringhe un elemento
-																	// dell'array mentions_name
+																 // dell'array mentions_name
 				}
 			}
 		}
@@ -62,14 +63,14 @@ public class CalcStats {
 	 */
 	public static HashMap<String,Integer> Calcolate(ArrayList<String> mentionsToArray) {
 		
-		//iterazione lungo tutto l'array
+		//iterazione lungo tutto l'array 
 		for (int i = 0; i < mentionsToArray.size(); i++) {
 			//vede se nella HashMap c'è un certo valore dato da mentionsToArray
 			if (mappa.containsKey(mentionsToArray.get(i))==true) {
 				
 				//aumenta il contatore della menzione gia presente di 1
 				TempValue=mappa.get(mentionsToArray.get(i));
-				mappa.replace(mentionsToArray.get(i), TempValue++);
+				mappa.replace(mentionsToArray.get(i), TempValue+1);
 				
 			}
 			else {
@@ -82,8 +83,20 @@ public class CalcStats {
 		}
 		//aggiunge noMentions alla mappa
 		mappa.put("Retweets senza menzioni", noMentions);
+		arrayString.clear();    //reset di arrayString
+		noMentions=0;           //reset di noMentions
 		return mappa;           //ritorna mappa
 	
+	}
+	
+	
+	/**
+	 * Reset della HashMap<String,Integer>.
+	 * 
+	 */
+	public static void ResetMap() {
+		
+		mappa.clear();
 	}
 
 }

@@ -22,7 +22,6 @@ import com.project.EsameProgettoTwitter.service.CalcStats;
 @RestController
 public class ControllerClass {
 	
-	
 	/**
 	 * Richiesta GET /metadata: riporta i metadati 
 	 * 
@@ -32,6 +31,7 @@ public class ControllerClass {
 	@RequestMapping(value = "metadata", method = RequestMethod.GET)
 	public ArrayList<Metadata> getMetadata(){
 		
+		RetweetsClass.ResetMetadata();
 		return RetweetsClass.getArrayMetadata();
 	}
 	
@@ -57,10 +57,10 @@ public class ControllerClass {
 	@RequestMapping(value = "stats", method = RequestMethod.GET)
 	public HashMap<String,Integer> getStats() {
 		
+		CalcStats.ResetMap();  //reset per evitare che ad una seconda chiamata, le informazioni siano errate
 		ArrayList<Proprieties> proprieties = RetweetsClass.getProprieties();
 		ArrayList<String> mToArray = CalcStats.mentionsToArray(proprieties);
 		return CalcStats.Calcolate(mToArray);
-		
 		
 	}
 

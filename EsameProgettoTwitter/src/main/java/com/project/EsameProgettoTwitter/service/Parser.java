@@ -27,8 +27,8 @@ public class Parser {
 	 * Proprieties
 	 * 
 	 * @param json: è il json scaricato 
-	 * @return proprieties cioè un ArrayList<Proprieties> popolato con oggetti che rappresentano i retweets
-	 * @throws JSONException se c'è un errore durante la costruzione di un JSON
+	 * @return proprieties cioe' un ArrayList<Proprieties> popolato con oggetti che rappresentano i retweets
+	 * @throws JSONException se c'e' un errore durante la costruzione di un JSON
 	 */
 	public static ArrayList<Proprieties> Parsing(JSONArray json) {
 
@@ -68,7 +68,7 @@ public class Parser {
 				// crea un oggetto Proprieties e lo aggiunge all'arraylist
 				Proprieties objectProprieties = new Proprieties(object.getString("created_at"),
 																object.getString("id_str"), 
-																object.getString("text"), 
+																object.getString("full_text"), 
 																HT, 
 																U_M_S_N, 
 																U_M_N, 
