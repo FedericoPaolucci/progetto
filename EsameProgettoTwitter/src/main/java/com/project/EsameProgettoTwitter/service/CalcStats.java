@@ -27,8 +27,10 @@ public class CalcStats {
 	 * Popola un arraylist di stringhe con tutte le menzioni dei retweet e
 	 * incrementa un contatore per ogni retweet senza menzioni
 	 * 
-	 * @return ArrayList<String> con tutte le menzioni presenti in tutti i retweet
+	 * @param proprieties : ArrayList di oggetti Proprieties che rappresenta i dati del json
+	 * @return arrayString : ArrayList con tutte le menzioni presenti in tutti i retweet
 	 */
+	
 	public static ArrayList<String> mentionsToArray(ArrayList<Proprieties> proprieties) {
 
 		// iterazione che prende ogni elemento di dell'arraylist proprieties
@@ -58,8 +60,8 @@ public class CalcStats {
 	 * Calcola la statistica delle menzioni, calcolando quante volte vengono
 	 * ripetuti i nomi.
 	 * 
-	 * @param Arraylist<String> fornito dall'operazione mentionsToArray (tutte le menzioni scritte in un Array di String)
-	 * @return HashMap<String,Integer> con menzioni e numero di volte in cui esse compaiono
+	 * @param mentionsToArray : Arraylist fornito dall'operazione mentionsToArray (tutte le menzioni scritte in un Array di String)
+	 * @return mappa : HashMap con menzioni e numero di volte in cui esse compaiono
 	 */
 	public static HashMap<String,Integer> Calcolate(ArrayList<String> mentionsToArray) {
 		
@@ -91,7 +93,7 @@ public class CalcStats {
 	
 	
 	/**
-	 * Reset della HashMap<String,Integer>.
+	 * Reset della HashMap.
 	 * 
 	 */
 	public static void ResetMap() {

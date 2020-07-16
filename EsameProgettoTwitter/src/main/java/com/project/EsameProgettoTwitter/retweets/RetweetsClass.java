@@ -31,7 +31,7 @@ public class RetweetsClass {
 	/**
 	 * Restituisce l'ArrayList di Proprieties, ovvero tutte le informazioni principali dei retweets.
 	 * 
-	 * @return Arraylist di oggetti Proprieties
+	 * @return proprieties : Arraylist di oggetti Proprieties
 	 */
 
 	public static ArrayList<Proprieties> getProprieties() {
@@ -41,7 +41,7 @@ public class RetweetsClass {
 	/**
 	 * Inizializza e restituisce l'ArrayList di Metadata
 	 * 
-	 * @return ArrayList di oggetti Metadata
+	 * @return metadata : ArrayList di oggetti Metadata
 	 */
 
 	public static ArrayList<Metadata> getArrayMetadata() {
@@ -57,7 +57,7 @@ public class RetweetsClass {
 	}
 	
 	/**
-	 * Reset dell'ArrayList<Metadata> 
+	 * Reset dell'ArrayList 
 	 */
 	public static void ResetMetadata() {
 		
@@ -109,8 +109,8 @@ public class RetweetsClass {
 	/**
 	 * Crea una stringa con tutto ciò che ha letto
 	 * 
-	 * @param rd che è il flusso di dati da cui estrarre il json
-	 * @return stringa con ciò che ha letto
+	 * @param rd : è il flusso di dati da cui estrarre il json
+	 * @return sb : stringa con ciò che ha letto
 	 * @throws IOException che viene lanciata in caso di errori di input/output (rd non fornisce dati)
 	 */
 

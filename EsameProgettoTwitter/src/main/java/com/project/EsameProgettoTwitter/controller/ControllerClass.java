@@ -48,10 +48,10 @@ public class ControllerClass {
 	}
 	
 	/**
-	 * Richiesta GET /stats: riporta quante volte una menzione compare nei retweets dell'user. 
+	 * Richiesta GET /stats: riporta quante volte una menzione compare nei tweets retwittati dell'user. 
 	 * Riporta anche quanti retweets non presentano menzioni.
 	 * 
-	 * @return HashMap<String,Integer> che rappresenta il numero di volte quelle menzioni appaiono nei retweets.
+	 * @return HashMap che rappresenta il numero di volte quelle menzioni appaiono nei retweets.
 	 */
 	
 	@RequestMapping(value = "stats", method = RequestMethod.GET)

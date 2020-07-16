@@ -18,8 +18,10 @@ import com.project.EsameProgettoTwitter.retweets.RetweetsClass;
 public class EsameProgettoTwitterApplication {
 	
 	static String url = "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/user/1.1/statuses/retweets_of_me.json";
-	//parametro per mostrare le entities dove sono contenute le menzioni
-	static String parameter = "?include_entities=true&tweet_mode=extended";
+	//parametri per : mostrare le entities dove sono contenute le menzioni, 
+	//                mostrare più caratteri nell'area "text",
+	//                mostrare 50 tweets
+	static String parameter = "?include_entities=true&tweet_mode=extended&count=50";
 	//url completo
 	static String urlcompleto = url + parameter;
 
