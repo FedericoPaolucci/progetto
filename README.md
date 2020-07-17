@@ -22,7 +22,7 @@ Si possono effettuare le seguenti richieste:
 
 **GET/data**: restituisce, in formato json, tutti i retweets dell'utente autenticato.
 
-**GET/stats**: restituisce, in formato json, una lista di tutte le menzioni effettuate dall'utente autenticato con accanto il numero di volte in cui queste appaiono negli ultimi 50 retweets. Inoltre viene restituito anche il numero di volte in cui è stato rilevato un retweet senza menzione. 
+**GET/stats**: restituisce, in formato json, una lista di tutte le menzioni effettuate dall'utente autenticato con accanto il numero di volte in cui queste appaiono negli ultimi 50 retweets e anche il numero di volte in cui è stato rilevato un retweet senza menzione. Inoltre vengono restituite due liste: una con le menzioni più frequenti (può restituire anche un solo elemento se quella menzione appare più volte) e una con le menzioni meno frequenti (può restituire un solo elemento se quella menzione appare meno volte rispetto alle altre).
 
 <img src="https://github.com/FedericoPaolucci/progetto/blob/master/UseCase.jpg" alt="UseCaseDiagram" width="500" height="500">
 
@@ -32,7 +32,7 @@ Il software Postman permette di eseguire richieste al server locale associato al
 
 
 ### Packages e classi
-<img src="https://github.com/FedericoPaolucci/progetto/blob/master/Diagramma%20classi.jpg" alt="UseCaseDiagram" width="1000" height="750">
+<img src="https://github.com/FedericoPaolucci/progetto/blob/master/Diagramma%20classi.jpg" alt="UseCaseDiagram" width="1200" height="750">
 
 
 In totale i packages sono 5:
@@ -40,7 +40,7 @@ In totale i packages sono 5:
 * *com.project.EsameProgettoTwitter.controller* contiene la classe "ControllerClass" che si occupa di gestire le chiamate effettuate dall'utente.
 * *com.project.EsameProgettoTwitter.retweets* contiene la classe "RetweetsClass" che si occupa di gestire ciò che ha a che fare con il json che scarichiamo. Infatti al suo interno abbiamo l'operazione che effettua il download del json e le operazioni che ritornano l'ArrayList di Metadati e l'Arraylist dei Dati quando vengono richiesti.
 * *com.project.EsameProgettoTwitter.model* contiene le classi "Metadata" e "Proprieties" che servono per costruire ArrayList di Oggetti Metadata e Proprieties.
-* *com.project.EsameProgettoTwitter.service* contiene le classi "Parser" e "CalcStats". Il primo si occupa di effettuare il parsing del json scaricato, organizzando i retweets e salvando le proprietà più rilevanti di essi. "CalcStats" invece si occupa di creare una mappa che mostra tutte le menzioni fatte dall'utente autenticato con la loro frequenza.
+* *com.project.EsameProgettoTwitter.service* contiene le classi "Parser", "CalcStats" e "CalcMostAndLess. Il primo si occupa di effettuare il parsing del json scaricato, organizzando i retweets e salvando le proprietà più rilevanti di essi. "CalcStats" si occupa di creare una mappa che mostra tutte le menzioni fatte dall'utente autenticato con la loro frequenza e richiama i due metodi di "CalcMostAndLess" per creare e restituire un oggetto Stats. "CalcMostAndLess" contiene due metodi: *CalcMost(HashMap<String,Integer> mappa)* restituisce una lista con le menzioni più frequenti nei retweets, *CalcLess(HashMap<String,Integer> mappa)* restituisce una lista con le menzioni meno frequenti nei retweets.
 
 
 ## Sequence Diagrams
@@ -65,7 +65,7 @@ Quando l'utente fa la richiesta di tipo GET "data" il programma richiama il meto
 
 ### GET/stats
 
-Quando l'utente fa la richiesta di tipo GET "stats" il programma richiama il metodo *getProprieties* dalla classe "RetweetsClass" e salva il risultato su una variabile. Questa viene poi inserita come parametro al metodo *mentionsToArray* della classe "CalcStats" che ritorna un array di strings con tutte le menzioni trovate. Il risultato di quest'ultima operazione viene passato come parametro al metodo *Calcolate* della classe "CalcStats" che darà come risultato un HashMap<String,Integer> dove le *keys* sono le menzioni dell'array non ripetute e i *values* sono il numero di volte in cui esse compaiono. Il risultato della richiesta GET/stats è visualizzato su Postman in formato Json.
+Quando l'utente fa la richiesta di tipo GET "stats" il programma richiama il metodo *getProprieties* dalla classe "RetweetsClass" e salva il risultato su una variabile. Questa viene poi inserita come parametro al metodo *mentionsToArray* della classe "CalcStats" che ritorna un array di strings con tutte le menzioni trovate. Il risultato di quest'ultima operazione viene passato come parametro al metodo *Calcolate* della classe "CalcStats" che darà come risultato un oggetto Stats che al suo interno ha tre parametri: una HashMap dove le *keys* sono le menzioni dell'array non ripetute e i *values* sono il numero di volte in cui esse compaiono, un'ArrayList con all'interno tutte le menzioni più frequenti e un'ArrayList con le menzioni meno frequenti. Il risultato della richiesta GET/stats è visualizzato su Postman in formato Json.
 
 
 <img src="https://github.com/FedericoPaolucci/progetto/blob/master/Sequence%20Diagram%20GetStats.jpg" alt="UseCaseDiagram" width="900" height="600">
