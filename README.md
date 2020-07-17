@@ -70,6 +70,18 @@ Quando l'utente fa la richiesta di tipo GET "stats" il programma richiama il met
 
 <img src="https://github.com/FedericoPaolucci/progetto/blob/master/Sequence%20Diagram%20GetStats.jpg" alt="UseCaseDiagram" width="900" height="600">
 
+## Javadoc 
+
+Il Javadoc è un applicativo del JDK utilizzato per generare automaticamente la documentazione del codice. Quando viene lanciato crea una serie di pagine scritte in HTML con all'interno tutti i commenti fatti dall'autore all'interno della scrittura
+```javascript
+/**
+ *  "commento"
+ */
+```
+Javadoc dividerà automaticamente i commenti in base alla classe o al metodo commentato.
+
+
+Il Javadoc di questo programma è accessibile al seguente indirizzo EsameProgettoTwitter/doc/index.html.
 
 ## Autore
 **Federico Paolucci**
