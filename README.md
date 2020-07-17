@@ -48,14 +48,26 @@ I seguenti diagrammi mostrano il funzionamento del programma.
 
 
 ### GET/metadata
+
+Quando l'utente fa la richiesta di tipo GET "metadata" il programma richiama il metodo *getArrayMetadata* dalla classe "RetweetsClass" e ritorna il risultato ovvero un ArrayList di Oggetti Metadata. Il risultato è visualizzato poi su Postman in formato Json.
+
+
 <img src="https://github.com/FedericoPaolucci/progetto/blob/master/Sequence%20Diagram%20GetMetadata.jpg" alt="UseCaseDiagram" width="900" height="500">
 
 
 ### GET/data
+
+Quando l'utente fa la richiesta di tipo GET "data" il programma richiama il metodo *getProprieties* dalla classe "RetweetsClass" e ritorna il risultato ovvero un ArrayList di Oggetti Proprieties. L'ArrayList viene costruito all'avvio dell'applicazione attraverso il metodo *downloadJSON* di "RetweetsClass" inserendo come parametro l'indirizzo dell'API di twitter. Il risultato della richiesta GET/data è visualizzato su Postman in formato Json.
+
+
 <img src="https://github.com/FedericoPaolucci/progetto/blob/master/Sequence%20Diagram%20GetData.jpg" alt="UseCaseDiagram" width="900" height="400">
 
 
 ### GET/stats
+
+Quando l'utente fa la richiesta di tipo GET "stats" il programma richiama il metodo *getProprieties* dalla classe "RetweetsClass" e salva il risultato su una variabile. Questa viene poi inserita come parametro al metodo *mentionsToArray* della classe "CalcStats" che ritorna un array di strings con tutte le menzioni trovate. Il risultato di quest'ultima operazione viene passato come parametro al metodo *Calcolate* della classe "CalcStats" che darà come risultato un HashMap<String,Integer> dove le *keys* sono le menzioni dell'array non ripetute e i *values* sono il numero di volte in cui esse compaiono. Il risultato della richiesta GET/stats è visualizzato su Postman in formato Json.
+
+
 <img src="https://github.com/FedericoPaolucci/progetto/blob/master/Sequence%20Diagram%20GetStats.jpg" alt="UseCaseDiagram" width="900" height="600">
 
 
