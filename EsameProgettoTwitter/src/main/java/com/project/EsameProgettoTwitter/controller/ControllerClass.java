@@ -1,7 +1,6 @@
 package com.project.EsameProgettoTwitter.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.EsameProgettoTwitter.model.Metadata;
 import com.project.EsameProgettoTwitter.model.Proprieties;
+import com.project.EsameProgettoTwitter.model.Stats;
 import com.project.EsameProgettoTwitter.retweets.RetweetsClass;
 import com.project.EsameProgettoTwitter.service.CalcStats;
 
@@ -51,11 +51,11 @@ public class ControllerClass {
 	 * Richiesta GET /stats: riporta quante volte una menzione compare nei tweets retwittati dell'user. 
 	 * Riporta anche quanti retweets non presentano menzioni.
 	 * 
-	 * @return HashMap che rappresenta il numero di volte quelle menzioni appaiono nei retweets.
+	 * @return oggetto Stats che rappresenta le statistiche dei retweets
 	 */
 	
 	@RequestMapping(value = "stats", method = RequestMethod.GET)
-	public HashMap<String,Integer> getStats() {
+	public Stats getStats() {
 		
 		CalcStats.ResetMap();  //reset per evitare che ad una seconda chiamata, le informazioni siano errate
 		ArrayList<Proprieties> proprieties = RetweetsClass.getProprieties();

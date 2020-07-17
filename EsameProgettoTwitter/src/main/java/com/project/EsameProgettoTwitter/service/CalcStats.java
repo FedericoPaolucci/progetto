@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.project.EsameProgettoTwitter.model.Proprieties;
+import com.project.EsameProgettoTwitter.model.Stats;
 
 /**
  * Classe che calcola le statistiche delle menzioni fatte nei retweets
@@ -16,12 +17,16 @@ public class CalcStats {
 	static ArrayList<Integer> arrayInt = new ArrayList<Integer>();
 	static HashMap<String,Integer> mappa = new HashMap<String,Integer>();
 
+	static Stats stats;
+	
 	public static int noMentions = 0; // numero di retweets senza menzioni
 
 	// in seguito oggetti temporanei utili per le operazioni
 	static Proprieties TempObject;
 	static int TempValue;
 	static String[] TempStringArray;
+	static ArrayList<String> TempArray1 = new ArrayList<String>();
+	static ArrayList<String> TempArray2 = new ArrayList<String>();
 
 	/**
 	 * Popola un arraylist di stringhe con tutte le menzioni dei retweet e
@@ -61,9 +66,9 @@ public class CalcStats {
 	 * ripetuti i nomi.
 	 * 
 	 * @param mentionsToArray : Arraylist fornito dall'operazione mentionsToArray (tutte le menzioni scritte in un Array di String)
-	 * @return mappa : HashMap con menzioni e numero di volte in cui esse compaiono
+	 * @return stats : oggetto Stats con le statistiche dei retweets
 	 */
-	public static HashMap<String,Integer> Calcolate(ArrayList<String> mentionsToArray) {
+	public static Stats Calcolate(ArrayList<String> mentionsToArray) {
 		
 		//iterazione lungo tutto l'array 
 		for (int i = 0; i < mentionsToArray.size(); i++) {
@@ -83,13 +88,22 @@ public class CalcStats {
 			
 			  
 		}
+		TempArray1=CalcMostAndLess.calcMost(mappa); //array con le menzioni piu presenti
+		TempArray2=CalcMostAndLess.calcLess(mappa); //array con le menzioni meno presenti
+		
+		stats = new Stats(mappa, TempArray1, TempArray2);
+		
 		//aggiunge noMentions alla mappa
 		mappa.put("Retweets senza menzioni", noMentions);
+		
 		arrayString.clear();    //reset di arrayString
 		noMentions=0;           //reset di noMentions
-		return mappa;           //ritorna mappa
+		return stats;           //ritorna stats
 	
 	}
+	
+	
+	
 	
 	
 	/**
